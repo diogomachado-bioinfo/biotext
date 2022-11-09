@@ -2,8 +2,6 @@ Biotext
 =======
 The biotext library offers resources to support text mining strategy using bioinformatics tool.
 
-Stand alone tools based on library are available at link <https://sourceforge.net/projects/biotext-tools/>.
-
 Installation
 ------------
 To install aminocode through `pip`::
