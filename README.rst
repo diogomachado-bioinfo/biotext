@@ -33,6 +33,7 @@ Required external libraries
 - unidecode
 - biopython
 - sweep
+- scikit-bio
 
 Functions
 ---------------
