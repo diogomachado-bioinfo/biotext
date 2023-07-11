@@ -390,7 +390,7 @@ print(alignment)
 # ---------YWYQRLD 3
 ```
 ---
-### biotext.fastatools.get_consensus
+### `biotext.fastatools.get_consensus`
 Get the consensus sequence from a list of sequences.
 
 **Parameters**
