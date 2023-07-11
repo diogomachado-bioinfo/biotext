@@ -1,5 +1,4 @@
-Biotext
-=======
+# Biotext
 Biotext is a Python library for text processing that offers resources to
 support text mining strategy using bioinformatics tools.
 
@@ -48,17 +47,19 @@ You can install BioText using pip:
 
 ---
 # Functions
+---
 
-## aminocode
+## AMINOcode
 
-### biotext.aminocode.encode_string
+---
+### `biotext.aminocode.encode_string`
 Encodes a string with AMINOcode.
 
 **Parameters**
 
-- input_string : str
+- `input_string` : str
     - Natural language text string to be encoded.
-- detail : str
+- `detail` : str
     - Set details in coding.
     - 'd' for details in digits; 'p' for details on the punctuation;
     'dp' or 'pd' for both.
@@ -66,7 +67,7 @@ Encodes a string with AMINOcode.
     
 **Returns**
 
-- encoded_string : string
+- `encoded_string` : string
   - Encoded text.
     
 **Example**
@@ -79,24 +80,24 @@ encoded_string = bt.aminocode.encode_string(input_string,'dp')
 print(encoded_string)
 # HYELLYQYSYWYQRLDYPW
 ```
-
-### biotext.aminocode.encode_list
+---
+### `biotext.aminocode.encode_list`
 Encodes all strings in a list with AMINOcode.
 
 **Parameters**
 
-- string_list : list
+- `string_list` : list
     - List of string to be encoded.
-- detail : str
+- `detail` : str
     - Set details in coding.'d' for details in digits; 'p' for details
     on the punctuation; 'dp' or 'pd' for both.
     - Default is 'dp'.
-- verbose  : bool
+- `verbose`  : bool
     - If True displays progress.
 
 **Returns**
 
-- encoded_list : list
+- `encoded_list` : list
     - List with all encoded text in string format.
     
 **Example**
@@ -109,22 +110,22 @@ encoded_list = bt.aminocode.encode_list(string_list,detail='dp')
 print(encoded_list)
 # ['HYELLYQ', 'YWYQRLD', 'YPW']
 ```
-
-### biotext.aminocode.decode_string
+---
+### `biotext.aminocode.decode_string`
 Decodes a string with AMINOcode reverse.
 
 **Parameters**
 
-- input_string : str
+- `input_string` : str
     - Text string encoded with AMINOcode.
-- detail : str
+- `detail` : str
     - Set details in coding. 'd' for details in digits; 'p' for details on 
     the punctuation; 'dp' or 'pd' for both.
     - Default is 'dp'.
 
 **Returns**
 
-- decoded_string : str
+- `decoded_string` : str
     - Decoded text.
     
 **Example**
@@ -137,24 +138,24 @@ decoded_string = bt.aminocode.decode_string(encoded_string,'dp')
 print(decoded_string)
 # hello world!
 ```
-
-### biotext.aminocode.decode_list
+---
+### `biotext.aminocode.decode_list`
 Decodes all strings in a list with reverse AMINOcode.	
 
 **Parameters**
 
-- string_list : list
+- `string_list` : list
     - List of string encoded with aminocode.
-- detail : str
+- `detail` : str
     - Set details in coding. 'd' for details in digits; 'p' for details on 
     the punctuation; 'dp' or 'pd' for both.
     - Default is 'dp'.
-- verbose  : bool
+- `verbose`  : bool
     - If True displays progress.
 
 **Returns**
 
-- decoded_list : list of string
+- `decoded_list` : list of string
     - List with all decoded text.
     
 **Example**
@@ -167,21 +168,21 @@ decoded_list = bt.aminocode.decode_list(encoded_list,detail='dp')
 print(decoded_list)
 # ['hello', 'world', '!']
 ```
+---
+## DNAbits
 
-## dnabits
-
-
-### biotext.dnabits.encode_string
+---
+### `biotext.dnabits.encode_string`
 Encodes a string with DNAbits.
 
 **Parameters**
 
-- input_string : string
+- `input_string` : string
     - Natural language text string to be encoded.
     
 **Returns**
 
-- encoded_string : string
+- `encoded_string` : string
     - Encoded text.
     
 **Example**
@@ -194,18 +195,18 @@ encoded_string = bt.dnabits.encode_string(input_string)
 print(encoded_string)
 # AGACCCGCATGCATGCTTGCAAGATCTCTTGCGATCATGCACGCCAGA
 ```
-
-### biotext.dnabits.decode_string
+---
+### `biotext.dnabits.decode_string`
 Decodes a string with DNAbits reverse.	
 
 **Parameters**
 
-- input_string : string
+- `input_string` : string
     - Text string encoded with DNAbits.
 
 **Returns**
 
-- decoded_string : string
+- `decoded_string` : string
     - Decoded text.
     
 **Example**
@@ -218,20 +219,20 @@ decoded_string = bt.dnabits.decode_string(encoded_string)
 print(decoded_string)
 # Hello world!
 ```
-
-### biotext.dnabits.encode_list
+---
+### `biotext.dnabits.encode_list`
 Encodes all strings in a list with DNAbits.	
 
 **Parameters**
 
-- string_list : list
+- `string_list` : list
     - List of string to be encoded.
-- verbose  : bool
+- `verbose`  : bool
     - If True displays progress.
 
 **Returns**
 
-- encoded_list : list
+- `encoded_list` : list
     - List with all encoded text in string format.
     
 **Example**
@@ -244,20 +245,20 @@ encoded_list = bt.dnabits.encode_list(string_list)
 print(encoded_list)
 # ['AGACCCGCATGCATGCTTGC', 'TCTCTTGCGATCATGCACGC', 'CAGA']
 ```
-
-### biotext.dnabits.decode_list
+---
+### `biotext.dnabits.decode_list`
 Decodes all strings in a list with reverse DNAbits.	
 
 **Parameters**
 
-- string_list : list
+- `string_list` : list
     - List of string encoded with DNAbits.
-verbose  : bool
+`verbose`  : bool
     - If True displays progress.
 
 **Returns**
 
-decoded_list : list of string
+`decoded_list` : list of string
     - List with all decoded text.
     
 **Example**
@@ -270,21 +271,21 @@ decoded_list = bt.dnabits.decode_list(encoded_list)
 print(decoded_list)
 # ['Hello', 'world', '!']
 ```
-
-## fastatools
+---
+## FASTA Tools
 
 ---
-### biotext.fastatools.import_fasta
+### `biotext.fastatools.import_fasta`
 Uses biopython to import a FASTA file.
 
 **Parameters**
 
-- input_file_name : string (valid file name)
+- `input_file_name` : string (valid file name)
     - Input fasta file name.
 
 **Returns**
 
-- seqrecord_list : list of SeqRecord
+- `seqrecord_list` : list of SeqRecord
     - List of SeqRecord imported from file.
     
 **Example**
@@ -302,15 +303,15 @@ print(fasta[0])
 # Number of features: 0
 # Seq('HYELLYQYSYWYQRLD')
 ```
-
-### biotext.fastatools.export_fasta
+---
+### `biotext.fastatools.export_fasta`
 Create a file using a SeqRecord (Biopython object) list.
 
 **Parameters**
 
-- output_file_name : string
+- `output_file_name` : string
     - Output fasta file name.
-- seqrecord_list : list of SeqRecord
+- `seqrecord_list` : list of SeqRecord
     - List of SeqRecord.
     
 **Example**
@@ -322,21 +323,21 @@ seq_list = ['ACTG','GTCA']
 seqrecord_list = bt.fastatools.create_seqrecord_list(seq_list)
 bt.fastatools.export_fasta(seqrecord_list,'sequences.fasta')
 ```
-
-### biotext.fastatools.create_seqrecord_list
+---
+### `biotext.fastatools.create_seqrecord_list`
 Create a list of SeqRecord (Biopython object) with a string list.
 
 **Parameters**
 
-- seq_list : list of string
+- `seq_list` : list of string
     - List of biological sequences in string format.
-- header : list of string
+- `header` : list of string
     - List of headers in string format, if set to 'None' the headers will 
     be automatically defined with numbers in increasing order.
 
 **Returns**
 
-- seqrecord_list : list of SeqRecord
+- `seqrecord_list` : list of SeqRecord
     - List of SeqRecord.
     
 **Example**
@@ -359,20 +360,20 @@ for i in seqrecord_list:
 # Number of features: 0
 # Seq('GTCA')
 ```
-
-### biotext.fastatools.run_clustalo
+---
+### `biotext.fastatools.run_clustalo`
 Run Clustal Omega multiple sequence alignment on the input file.
 
 **Parameters**
 
-- input_file_name : str
+- `input_file_name` : str
     - Path to the input file containing the sequences to align.
-- args : str, optional
+- `args` : str, optional
     - Additional arguments to pass to Clustal Omega. Defaults to an empty string.
 
 **Returns**
 
-- align : Bio.Align.MultipleSeqAlignment
+- `align` : Bio.Align.MultipleSeqAlignment
     - Aligned sequences in the Clustal format.
 
 **Example**
@@ -388,15 +389,15 @@ print(alignment)
 # HYELLYQ--------- 2
 # ---------YWYQRLD 3
 ```
-
+---
 ### biotext.fastatools.get_consensus
 Get the consensus sequence from a list of sequences.
 
 **Parameters**
 
-- seq_list : list
+- `seq_list` : list
     - List of sequences in SeqRecord object format or as strings.
-- preserve_gap : bool, optional
+- `preserve_gap` : bool, optional
     - If True, the consensus sequence may contain gaps ("-") based
 	on the majority characters and the gaps present in the aligned sequences. 
     - If False, the consensus sequence is determined without gaps
@@ -404,10 +405,10 @@ Get the consensus sequence from a list of sequences.
 
 **Returns**
 
-- consensus : str
+- `consensus` : str
     - Consensus sequence based on the majority characters, with or without
 	gaps ("-") depending on the `preserve_gap` parameter.
-- align : list
+- `align` : list
     - List of aligned sequences.
 
 **Example**
@@ -422,18 +423,18 @@ print('Alignment: ', align)
 # Consensus:  ACCC
 # Alignment:  ['ACTG', 'ACTC', 'ACCC', 'ACC-']
 ```
-
-### biotext.fastatools.get_header
+---
+### `biotext.fastatools.get_header`
 Get the header from all items in a list of SeqRecord (Biopython object).
 
 **Parameters**
 
-- seqrecord_list : list of SeqRecord
+- `seqrecord_list` : list of SeqRecord
     - List of SeqRecord.
 
 **Returns**
 
-- header_list : list of string
+- `header_list` : list of string
     - List of all headers extracted from input.
     
 **Example**
@@ -447,18 +448,18 @@ extracted_header_list = bt.fastatools.get_header(seqrecord_list)
 print(extracted_header_list)
 # ['1', '2']
 ```
-
-### biotext.fastatools.get_seq
+---
+### `biotext.fastatools.get_seq`
 Get the sequences from all items in a list of SeqRecord (Biopython object).
 
 **Parameters**
 
-- seqrecord_list : list of SeqRecord
+- `seqrecord_list` : list of SeqRecord
     - List of SeqRecord.
 
 **Returns**
 
-- seq_list : list of string
+- `seq_list` : list of string
     - List of all sequences extracted from input.
     
 **Example**
@@ -472,22 +473,22 @@ extracted_seq_list = bt.fastatools.get_seq(seqrecord_list)
 print(extracted_seq_list)
 # ['ACTG', 'GTCA']
 ```
-
-### biotext.fastatools.fasta_to_mat
+---
+### `biotext.fastatools.fasta_to_mat`
 Convert FASTA sequences to a matrix representation using SWeeP method.
 
 **Parameters**
 
-- fasta : list
+- `fasta` : list
     - List of sequences in SeqRecord object format or as strings.
-- mask : list, optional
+- `mask` : list, optional
     - A list specifying the mask values. Defaults to [2, 1, 2].
-- **kwargs : dict, optional
+- `**kwargs` : dict, optional
     - Additional keyword arguments to pass to the `fas2sweep` function.
 
 **Returns**
 
-- mat : numpy.ndarray or scipy.sparse.lil_matrix
+- `mat` : numpy.ndarray or scipy.sparse.lil_matrix
     - Matrix representation of the sequences.
 
 **Example**
@@ -500,8 +501,8 @@ matrix = bt.fastatools.fasta_to_mat(seq_list)
 print(matrix.shape)
 # (3, 600)
 ```
-
-## pubmedtools
+---
+## Pubmed Tools
 
 ---
 ### biotext.pubmedtools.pubmed_search_biopython
@@ -512,30 +513,30 @@ The search is limited to 10,000 results.
 
 **Parameters**
 
-- term : str
+- `term` : str
     - The search term to be used in the query.
-- email : str, optional
+- `email` : str, optional
     - Email address to be used in case the Entrez server needs to contact you.
-- api_key : str, optional
+- `api_key` : str, optional
     - API key to access the Entrez server.
-- batch_size : int, optional
+- `batch_size` : int, optional
     - Number of articles to be downloaded per iteration. Default is 1000.
-- verbose : bool, optional
+- `verbose` : bool, optional
     - Whether to print progress messages. Default is True.
 
 **Returns**
 
-- pandas.DataFrame
+- `result` : pandas.DataFrame
     - A DataFrame with columns 'pmid', 'ti', 'ab', 'fau', 'dp', 'mh', and 'ot'.
     - Each row contains information related to a single article retrieved from the search term query.
 
 **Raises**
 
-Exception
+- Exception
     - If the search returns more than 10,000 results, which is the limit of this function.
     In this case, the user should use the `pubmed_search_edirect` function.
-
-### biotext.pubmedtools.pubmed_search_edirect
+---
+### `biotext.pubmedtools.pubmed_search_edirect`
 Searches the PubMed database using a given term and retrieves the abstract, title, publication date,
 authors, MeSH terms, and other terms related to each article. This function use the official NCBI
 Entrez Direct tool.
@@ -549,7 +550,7 @@ Entrez Direct tool.
 
 **Returns**
 
-- pandas.DataFrame
+- `result` : pandas.DataFrame
     - A pandas DataFrame containing the search results.
 
 **Notes**
@@ -560,68 +561,69 @@ Entrez Direct tool.
 
 - Exception
     - If the operating system is not recognized.
-
-### biotext.pubmedtools.prepare_edirect_folder
+---
+### `biotext.pubmedtools.prepare_edirect_folder`
 Function to prepare the edirect folder for pubmed_search_edirect.
 
 Checks if the edirect folder exists and contains the necessary files.
 If not, it downloads and extracts the required files into the edirect folder.
 
-## wordembtools
-
+## Word Embedding Tools
+---
+### `wordembtools`
 
 A class for generating word embeddings from a collection of texts.
 
 **Parameters**
 
-- data_set : list or pandas.Series
+- `data_set` : list or pandas.Series
     - The collection of texts to generate embeddings.
-- word_set : list, optional
+- `word_set` : list, optional
     - A pre-defined set of words to use for the embedding. Defaults to None.
-- remove_stopwords : bool, optional
+- `remove_stopwords` : bool, optional
     - Whether to remove stop words from the texts. Defaults to False.
-- stopwords_list : list, optional
+- `stopwords_list` : list, optional
     - Custom list of stop words to remove from the texts. Defaults to None.
-- min_occ_to_use : int, optional
+- `min_occ_to_use` : int, optional
     - The minimum number of occurrences of a word in the collection of texts
     to include it in the embedding. Defaults to 100.
-- max_words : int, optional
+- `max_words` : int, optional
     - The maximum number of words to include in the word set. Defaults to
     10,000.
-- word_tokenizer_fun : function, optional
+- `word_tokenizer_fun` : function, optional
     - Custom function for tokenizing words in each text. Defaults to None.
-- sweep_projection_mat : numpy.ndarray, optional
+- `sweep_projection_mat` : numpy.ndarray, optional
     - The projection matrix for SWeeP vectorization. Defaults to None.
-- sweep_mask : list, optional
+- `sweep_mask` : list, optional
     - The mask to apply during SWeeP vectorization. Defaults to [2, 1, 2].
-- sweep_dtype : dtype, optional
+- `sweep_dtype` : dtype, optional
     - The data type for SWeeP vectorization. Defaults to None.
-- sweep_composition : str, optional
+- `sweep_composition` : str, optional
     - The composition mode for SWeeP vectorization. Defaults to 'binary'.
-- preserve_data_set_splited : bool, optional
+- `preserve_data_set_splited` : bool, optional
     - Whether to preserve the split data set object. Defaults to False.
-- preserve_data_set_sweeped : bool, optional
+- `preserve_data_set_sweeped` : bool, optional
     - Whether to preserve the swept data set object. Defaults to False.
-- n_jobs : int, optional
+- `n_jobs` : int, optional
     - The number of jobs to use for parallelization. Defaults to 1.
-- chunk_size : int, optional
+- `chunk_size` : int, optional
     - The size of each chunk for parallelization. Defaults to 1000.
-- sweep_n_jobs : int, optional
+- `sweep_n_jobs` : int, optional
     - The number of jobs to use for SWeeP vectorization. Defaults to None.
     - If None, it receives the value of n_jobs.
-- sweep_chunk_size : int, optional
+- `sweep_chunk_size` : int, optional
     - The size of each chunk for SWeeP vectorization. Defaults to None.
     - If None, it receives the value of chunk_size.
-- verbose : bool, optional
+- `verbose` : bool, optional
     - Whether to print progress messages. Defaults to True.
 
 **Attributes**
 
-- word_set : list
+- `word_set` : list
     - Set of unique words.
-- word_embedding : numpy.ndarray
+- `word_embedding` : numpy.ndarray
     - Word embeddings for the words in the word_set.
-- elapsed_time : list
+- `elapsed_time` : list
     - Elapsed time for each step of the process.
 
 **Example**
