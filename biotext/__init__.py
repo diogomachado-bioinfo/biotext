@@ -1,8 +1,7 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 from . import fastatools
-from . import treetools
 from . import dnabits
 from . import aminocode
 from . import pubmedtools
-from . import utilities
+from . import wordembtools

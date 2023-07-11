@@ -1,28 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
-'''
-Library with functions for encoding and decoding using the DNAbits method.
-'''
 import re
 import numpy as np
 import warnings
-
-def str_to_bin(string):
-    res = ''
-    for char in string:
-        tmp = bin(ord(char))[2:]
-        tmp = '%08d' %int(tmp)
-        tmp=tmp[::-1]
-        res += tmp
-    return res
-def bin_to_str(string):
-    res = ''
-    for idx in range(int(len(string)/8)):
-        cstr = string[idx*8:(idx+1)*8]
-        cstr=cstr[::-1] #???
-        tmp = chr(int(cstr, 2))
-        res += tmp
-    return res
 
 def encode_string(input_string):
     """
@@ -40,7 +20,7 @@ def encode_string(input_string):
         
     Example
     --------
-    Enconde a string.
+    Encode a string.
 
     >>> import biotext as bt
     >>> input_string = "Hello world!"
@@ -81,7 +61,7 @@ def decode_string(input_string):
         
     Example
     --------
-    Deconde a string.
+    Decode a string.
 
     >>> import biotext as bt
     >>> encoded_string = "AGACCCGCATGCATGCTTGCAAGATCTCTTGCGATCATGCACGCCAGA"
@@ -162,7 +142,7 @@ def decode_list(input_list,output_file=None,verbose=False):
         
     Example
     --------
-    Descode the strings in a list and view the result with a loop.
+    Decode the strings in a list and view the result with a loop.
 
     >>> import biotext as bt
     >>> encoded_list = ['AGACCCGCATGCATGCTTGC', 'TCTCTTGCGATCATGCACGC', 'CAGA']
@@ -186,3 +166,21 @@ def decode_list(input_list,output_file=None,verbose=False):
         print(str(list_size)+'/'+str(list_size))
     
     return decoded_list
+
+def str_to_bin(string):
+    res = ''
+    for char in string:
+        tmp = bin(ord(char))[2:]
+        tmp = '%08d' %int(tmp)
+        tmp=tmp[::-1]
+        res += tmp
+    return res
+
+def bin_to_str(string):
+    res = ''
+    for idx in range(int(len(string)/8)):
+        cstr = string[idx*8:(idx+1)*8]
+        cstr=cstr[::-1] #???
+        tmp = chr(int(cstr, 2))
+        res += tmp
+    return res

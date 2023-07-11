@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 '''
 Library with functions for encoding and decoding using the AMINOcode method.
@@ -70,7 +70,7 @@ def encode_string(input_string,detail='dp'):
         Natural language text string to be encoded.
     detail : string
         Set details in coding. 'd' for details in digits; 'p' for details on 
-        the punctuation; 'dp' or 'pd' for both.
+        the punctuation; 'dp' or 'pd' for both. Default is 'dp'.
         
     Output
     --------
@@ -79,7 +79,7 @@ def encode_string(input_string,detail='dp'):
         
     Example
     --------
-    Enconde a string.
+    Encode a string.
 
     >>> import biotext as bt
     >>> input_string = "Hello world!"
@@ -128,7 +128,7 @@ def decode_string(input_string,detail='dp'):
         Text string encoded with AMINOcode.
     detail : string
         Set details in coding. 'd' for details in digits; 'p' for details on 
-        the punctuation; 'dp' or 'pd' for both.
+        the punctuation; 'dp' or 'pd' for both. Default is 'dp'.
 
     Output
     --------
@@ -137,7 +137,7 @@ def decode_string(input_string,detail='dp'):
         
     Example
     --------
-    Deconde a string.
+    Decode a string.
 
     >>> import biotext as bt
     >>> encoded_string = "HYELLYQYSYWYQRLDYPW"
@@ -169,8 +169,8 @@ def encode_list(string_list, detail='dp', verbose=False):
         List of string to be encoded.
     detail : string
         Set details in coding. 'd' for details in digits; 'p' for details on 
-        the punctuation; 'dp' or 'pd' for both.
-    verbose : bool
+        the punctuation; 'dp' or 'pd' for both. Default is 'dp'.
+    verbose  : bool
         If True displays progress.
 
     Output
@@ -214,8 +214,8 @@ def decode_list(input_list,detail='dp',verbose=False):
         List of string encoded with aminocode.
     detail : string
         Set details in coding. 'd' for details in digits; 'p' for details on 
-        the punctuation; 'dp' or 'pd' for both.
-    verbose : bool
+        the punctuation; 'dp' or 'pd' for both. Default is 'dp'.
+    verbose  : bool
         If True displays progress.
 
     Output
