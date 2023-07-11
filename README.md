@@ -505,7 +505,7 @@ print(matrix.shape)
 ## Pubmed Tools
 
 ---
-### biotext.pubmedtools.pubmed_search_biopython
+### `biotext.pubmedtools.pubmed_search_biopython`
 Searches the PubMed database using a given term and retrieves the abstract, title, publication date,
 authors, MeSH terms, and other terms related to each article. This function use the Bio.Entrez package
 from Biopython.
