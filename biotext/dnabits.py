@@ -1,8 +1,21 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
+"""
+This module provides functions for encoding and decoding text using DNAbits.
+
+Functions:
+- encode_string: Encodes a string using DNAbits.
+- decode_string: Decodes a string encoded with DNAbits.
+- encode_list: Encodes all strings in a list using DNAbits.
+- decode_list: Decodes all strings in a list encoded with DNAbits.
+- str_to_bin: Converts a string to a binary representation.
+- bin_to_str: Converts a binary representation to a string.
+
+Author: Diogo de J. S. Machado
+Date: 13/07/2023
+"""
 import re
 import numpy as np
-import warnings
 
 def encode_string(input_string):
     """
@@ -13,13 +26,13 @@ def encode_string(input_string):
     input_string : string
         Natural language text string to be encoded.
         
-    Output
-    --------
+    Returns
+    -------
     encoded_string : string
         Encoded text.
         
     Example
-    --------
+    -------
     Encode a string.
 
     >>> import biotext as bt
@@ -54,13 +67,13 @@ def decode_string(input_string):
     input_string : string
         Text string encoded with DNAbits.
 
-    Output
-    --------
+    Returns
+    -------
     decoded_string : string
         Decoded text.
         
     Example
-    --------
+    -------
     Decode a string.
 
     >>> import biotext as bt
@@ -93,13 +106,13 @@ def encode_list(string_list, verbose=False):
     verbose  : bool
         If True displays progress.
 
-    Output
-    --------
+    Returns
+    -------
     encoded_list : list
         List with all encoded text in string format.
         
     Example
-    --------
+    -------
     Encode the strings in a list and view the result of the first item.
 
     >>> import biotext as bt
@@ -135,8 +148,8 @@ def decode_list(input_list,output_file=None,verbose=False):
     verbose  : bool
         If True displays progress.
 
-    Output
-    --------
+    Returns
+    -------
     decoded_list : list of string
         List with all decoded text.
         
