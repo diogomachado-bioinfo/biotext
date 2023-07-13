@@ -1,9 +1,17 @@
 # Biotext
-Biotext is a Python library for text processing that offers resources to
+
+---
+
+Biotext is a Python package for text processing that offers resources to
 support text mining strategy using bioinformatics tools.
 
 ---
+
+---
+
 # Features
+
+---
 
 ## AMINOcode (biotext.aminocode)
 - `biotext.aminocode.encode_string`: Encodes a string using AMINOcode.
@@ -40,16 +48,23 @@ support text mining strategy using bioinformatics tools.
                                         collection of texts.
 
 ---
+
+---
+
 # Installation
+
 You can install BioText using pip:
 
     pip install biotext
+---
 
 ---
+
 # Functions
+
 ---
 
-## AMINOcode
+## AMINOcode (aminocode)
 
 ---
 ### `biotext.aminocode.encode_string`
@@ -169,7 +184,8 @@ print(decoded_list)
 # ['hello', 'world', '!']
 ```
 ---
-## DNAbits
+
+## DNAbits (dnabits)
 
 ---
 ### `biotext.dnabits.encode_string`
@@ -272,7 +288,8 @@ print(decoded_list)
 # ['Hello', 'world', '!']
 ```
 ---
-## FASTA Tools
+
+## FASTA Tools (fastatools)
 
 ---
 ### `biotext.fastatools.import_fasta`
@@ -390,7 +407,7 @@ print(alignment)
 # ---------YWYQRLD 3
 ```
 ---
-### `biotext.fastatools.get_consensus`
+### biotext.fastatools.get_consensus
 Get the consensus sequence from a list of sequences.
 
 **Parameters**
@@ -502,10 +519,10 @@ print(matrix.shape)
 # (3, 600)
 ```
 ---
-## Pubmed Tools
+## Pubmed Tools (pubmedtools)
 
 ---
-### `biotext.pubmedtools.pubmed_search_biopython`
+### biotext.pubmedtools.pubmed_search_biopython
 Searches the PubMed database using a given term and retrieves the abstract, title, publication date,
 authors, MeSH terms, and other terms related to each article. This function use the Bio.Entrez package
 from Biopython.
@@ -568,7 +585,10 @@ Function to prepare the edirect folder for pubmed_search_edirect.
 Checks if the edirect folder exists and contains the necessary files.
 If not, it downloads and extracts the required files into the edirect folder.
 
-## Word Embedding Tools
+---
+
+## Word Embedding Tools (wordembtools)
+
 ---
 ### `wordembtools`
 
@@ -638,6 +658,9 @@ embeddings = we.word_embedding
 ```
 
 ---
+
+---
+
 # Usage Examples
 
 ## Encoding with AMINOcode
