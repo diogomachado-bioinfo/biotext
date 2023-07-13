@@ -2,8 +2,11 @@
 
 ---
 
-Biotext is a Python package for text processing that offers resources to
-support text mining strategy using bioinformatics tools.
+The biotext library offers resources for natural language processing based on
+bioinformatics tools. With biotext, it is possible to use native bioinformatics
+methods to create text mining strategies. The biotext process starts by
+encoding natural language texts in a format based on biological sequences,
+which are usable in alignment and vectorization approaches.
 
 ---
 
@@ -15,37 +18,39 @@ support text mining strategy using bioinformatics tools.
 
 ## AMINOcode (biotext.aminocode)
 - `biotext.aminocode.encode_string`: Encodes a string using AMINOcode.
-- `biotext.aminocode.encode_list`: Encodes all strings in a list using AMINOcode.
+- `biotext.aminocode.encode_list`: Encodes all strings in a list using
+                                   AMINOcode.
 - `biotext.aminocode.decode_string`: Decodes a string encoded with AMINOcode.
-- `biotext.aminocode.decode_list`: Decodes all strings in a list encoded with AMINOcode.
+- `biotext.aminocode.decode_list`: Decodes all strings in a list encoded with
+                                   AMINOcode.
 
 ## DNAbits (biotext.dnabits)
 - `biotext.dnabits.encode_string`: Encodes a string using DNAbits.
 - `biotext.dnabits.decode_string`: Decodes a string encoded with DNAbits.
 - `biotext.dnabits.encode_list`: Encodes all strings in a list using DNAbits.
-- `biotext.dnabits.decode_list`: Decodes all strings in a list encoded with DNAbits.
+- `biotext.dnabits.decode_list`: Decodes all strings in a list encoded with
+                                 DNAbits.
 
 ## FASTA Tools (biotext.fastatools)
 - `biotext.fastatools.import_fasta`: Imports a FASTA file.
-- `biotext.fastatools.export_fasta`: Creates a FASTA file from a list of sequences.
-- `biotext.fastatools.create_seqrecord_list`: Creates a list of SeqRecord objects from a
-                                            list of sequences.
-- `biotext.fastatools.run_clustalo`: Performs multiple sequence alignment using Clustal Omega.
-- `biotext.fastatools.get_consensus`: Retrieves the consensus sequence from a set of sequences.
-- `biotext.fastatools.get_header`: Retrieves the headers from a list of SeqRecord objects.
-- `biotext.fastatools.get_seq`: Retrieves the sequences from a list of SeqRecord objects.
-- `biotext.fastatools.fasta_to_mat`: Converts FASTA sequences to a matrix representation.
-
-## PubMed Tools (biotext.pubmedtoos)
-- `biotext.aminocode.pubmed_search_biopython`: Searches the PubMed database using a given term.
-- `biotext.aminocode.pubmed_search_edirect`: Searches the PubMed database using the Entrez
-                                           Direct tool.
-- `biotext.aminocode.prepare_edirect_folder`: Prepares the Entrez Direct folder for use with
-                                              the pubmed_search_edirect function.
+- `biotext.fastatools.export_fasta`: Creates a FASTA file from a list of
+                                     sequences.
+- `biotext.fastatools.create_seqrecord_list`: Creates a list of SeqRecord
+                                              objects from a list of sequences.
+- `biotext.fastatools.run_clustalo`: Performs multiple sequence alignment using
+                                     Clustal Omega.
+- `biotext.fastatools.get_consensus`: Retrieves the consensus sequence from a
+                                      set of sequences.
+- `biotext.fastatools.get_header`: Retrieves the headers from a list of
+                                   SeqRecord objects.
+- `biotext.fastatools.get_seq`: Retrieves the sequences from a list of
+                                SeqRecord objects.
+- `biotext.fastatools.fasta_to_mat`: Converts FASTA sequences to a vectorial
+                                     representation.
 
 ## Word Embedding Tools (biotext.wordembtools)
-- `biotext.wordembtools.WordEmbedding`: A class for generating word embeddings from a
-                                        collection of texts.
+- `biotext.wordembtools.WordEmbedding`: A class for generating word embeddings
+                                        from a collection of texts.
 
 ---
 
@@ -519,71 +524,6 @@ print(matrix.shape)
 # (3, 600)
 ```
 ---
-## Pubmed Tools (pubmedtools)
-
----
-### biotext.pubmedtools.pubmed_search_biopython
-Searches the PubMed database using a given term and retrieves the abstract, title, publication date,
-authors, MeSH terms, and other terms related to each article. This function use the Bio.Entrez package
-from Biopython.
-The search is limited to 10,000 results.
-
-**Parameters**
-
-- `term` : str
-    - The search term to be used in the query.
-- `email` : str, optional
-    - Email address to be used in case the Entrez server needs to contact you.
-- `api_key` : str, optional
-    - API key to access the Entrez server.
-- `batch_size` : int, optional
-    - Number of articles to be downloaded per iteration. Default is 1000.
-- `verbose` : bool, optional
-    - Whether to print progress messages. Default is True.
-
-**Returns**
-
-- `result` : pandas.DataFrame
-    - A DataFrame with columns 'pmid', 'ti', 'ab', 'fau', 'dp', 'mh', and 'ot'.
-    - Each row contains information related to a single article retrieved from the search term query.
-
-**Raises**
-
-- Exception
-    - If the search returns more than 10,000 results, which is the limit of this function.
-    In this case, the user should use the `pubmed_search_edirect` function.
----
-### `biotext.pubmedtools.pubmed_search_edirect`
-Searches the PubMed database using a given term and retrieves the abstract, title, publication date,
-authors, MeSH terms, and other terms related to each article. This function use the official NCBI
-Entrez Direct tool.
-
-**Parameters**
-
-- query : str
-    - The query to be searched in PubMed.
-- api_key : str, optional
-    - The NCBI API key. If not provided, the search will be performed without the API key.
-
-**Returns**
-
-- `result` : pandas.DataFrame
-    - A pandas DataFrame containing the search results.
-
-**Notes**
-
-- This function works with Linux and Windows systems using WSL (Windows Subsystem for Linux).
-
-**Raises**
-
-- Exception
-    - If the operating system is not recognized.
----
-### `biotext.pubmedtools.prepare_edirect_folder`
-Function to prepare the edirect folder for pubmed_search_edirect.
-
-Checks if the edirect folder exists and contains the necessary files.
-If not, it downloads and extracts the required files into the edirect folder.
 
 ---
 
@@ -702,14 +642,6 @@ print(fasta[0])  # Print the first sequence in the input file
 seq_list = ['ACTG', 'GTCA']
 seqrecord_list = bt.fastatools.create_seqrecord_list(seq_list)
 bt.fastatools.export_fasta(seqrecord_list, 'sequences.fasta')
-```
-## Searching PubMed Databases
-```python
-import biotext as bt
-
-term = '31919449[pmid]'
-search_results = bt.pubmedtools.pubmed_search_biopython(term)
-print(search_results)
 ```
 ## Generating Word Embeddings
 ```python
