@@ -1,8 +1,17 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-'''
-Library with functions for encoding and decoding using the AMINOcode method.
-'''
+"""
+This module provides functions for encoding and decoding text using AMINOcode.
+
+Functions:
+- encode_string: Encodes a string using AMINOcode.
+- decode_string: Decodes a string encoded with AMINOcode.
+- encode_list: Encodes all strings in a list using AMINOcode.
+- decode_list: Decodes all strings in a list encoded with AMINOcode.
+
+Author: Diogo de J. S. Machado
+Date: 13/07/2023
+"""
 import re
 import unidecode
 
@@ -72,13 +81,13 @@ def encode_string(input_string,detail='dp'):
         Set details in coding. 'd' for details in digits; 'p' for details on 
         the punctuation; 'dp' or 'pd' for both. Default is 'dp'.
         
-    Output
-    --------
+    Returns
+    -------
     encoded_string : string
         Encoded text.
         
     Example
-    --------
+    -------
     Encode a string.
 
     >>> import biotext as bt
@@ -130,8 +139,8 @@ def decode_string(input_string,detail='dp'):
         Set details in coding. 'd' for details in digits; 'p' for details on 
         the punctuation; 'dp' or 'pd' for both. Default is 'dp'.
 
-    Output
-    --------
+    Returns
+    -------
     decoded_string : string
         Decoded text.
         
@@ -173,13 +182,13 @@ def encode_list(string_list, detail='dp', verbose=False):
     verbose  : bool
         If True displays progress.
 
-    Output
-    --------
+    Returns
+    -------
     encoded_list : list
         List with all encoded text in string format.
         
     Example
-    --------
+    -------
     Encode the strings in a list and view the result of the first item.
 
     >>> import biotext as bt
@@ -218,13 +227,13 @@ def decode_list(input_list,detail='dp',verbose=False):
     verbose  : bool
         If True displays progress.
 
-    Output
-    --------
+    Returns
+    -------
     decoded_list : list of string
         List with all decoded text.
         
     Example
-    --------
+    -------
     Descode the strings in a list and view the result with a loop.
 
     >>> import biotext as bt
