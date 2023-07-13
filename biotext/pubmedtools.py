@@ -1,5 +1,29 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
+
+"""
+This module provides functions for searching and retrieving articles from the
+PubMed database using Biopython and NCBI Entrez Direct.
+
+Functions:
+- pubmed_search_biopython: Searches the PubMed database using a given term and
+retrieves article information such as abstract, title, publication date,
+authors, MeSH terms, and other terms related to each article. This function
+uses the Bio.Entrez package from Biopython. Please note that this function
+has a limitation of retrieving a maximum of 10,000 results.
+- pubmed_search_edirect: Searches the PubMed database using a given term and
+retrieves article information such as abstract, title, publication date,
+authors, MeSH terms, and other terms related to each article. This function
+uses the official NCBI Entrez Direct tool. This function works with Linux and
+Windows systems using WSL (Windows Subsystem for Linux).
+- prepare_edirect_folder: Function to prepare the edirect folder for
+pubmed_search_edirect. It checks if the edirect folder exists and contains the
+necessary files. If not, it downloads and extracts the required files into the
+edirect folder.
+
+Author: Diogo de J. S. Machado
+Date: 13/07/2023
+"""
 import re
 from Bio import Entrez, Medline
 import time
@@ -27,7 +51,7 @@ def pubmed_search_biopython(term, email='', api_key=None, batch_size=1000, verbo
     email : str, optional
         Email address to be used in case the Entrez server needs to contact you.
     api_key : str, optional
-        API key to access the Entrez server.
+        The NCBI API key. If not provided, the search will be performed without the API key.
     batch_size : int, optional
         Number of articles to be downloaded per iteration. Default is 1000.
     verbose : bool, optional
