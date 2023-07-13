@@ -1,6 +1,13 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-import biotext as bt
+"""
+This module provides a class for generating word embeddings from a collection
+of texts using biotext.
+
+Author: Diogo de J. S. Machado
+Date: 13/07/2023
+"""
+from . import fastatools, aminocode
 import numpy as np
 from tqdm import tqdm
 import sys
@@ -271,7 +278,7 @@ class WordEmbedding:
         s = time()
         chunks = split_array(data_set, chunk_size)
         data_set_encoded = parallelization(lambda x:
-                                          bt.aminocode.encode_list(x),
+                                          aminocode.encode_list(x),
                                           chunks,
                                           f'[{process_count}/'
                                           f'{process_count_max}] Encoding')
@@ -285,7 +292,7 @@ class WordEmbedding:
             print(f'[{process_count}/{process_count_max}] Vectorizing...')
         # Convert the encoded data set to a matrix using SWeeP
         s = time()
-        data_set_sweeped = bt.fastatools.fasta_to_mat(data_set_encoded,
+        data_set_sweeped = fastatools.fasta_to_mat(data_set_encoded,
                                         orth_mat = self.sweep_projection_mat,
                                         composition = sweep_composition,
                                         dtype = sweep_dtype,
