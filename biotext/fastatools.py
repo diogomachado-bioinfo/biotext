@@ -1,5 +1,22 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
+"""
+This module provides functions for working with FASTA files and performing
+sequence alignment.
+
+Functions:
+- import_fasta: Import a FASTA file using Biopython.
+- export_fasta: Export a SeqRecord list as a FASTA file.
+- create_seqrecord_list: Create a SeqRecord list from a string list.
+- run_clustalo: Run Clustal Omega multiple sequence alignment.
+- get_consensus: Get the consensus sequence from a list of sequences.
+- get_header: Get the headers from a list of SeqRecord objects.
+- get_seq: Get the sequences from a list of SeqRecord objects.
+- fasta_to_mat: Convert FASTA sequences to a matrix representation using SWeeP.
+
+Author: Diogo de J. S. Machado
+Date: 13/07/2023
+"""
 import tempfile
 import os
 from Bio import AlignIO, SeqIO
@@ -12,10 +29,6 @@ import codecs
 from sweep import fas2sweep
 import subprocess
 from scipy.sparse import lil_matrix, isspmatrix_lil
-import os
-import subprocess
-import tempfile
-from Bio import AlignIO
     
 def import_fasta(input_file_name):
     """
@@ -26,13 +39,13 @@ def import_fasta(input_file_name):
     input_file_name : string (valid file name)
         Input fasta file name.
 
-    Output
-    --------
+    Returns
+    -------
     seqrecord_list : list of SeqRecord
         List of SeqRecord imported from file.
         
     Example
-    --------
+    -------
     Import a FASTA file named 'sequences.fasta'.
 
     >>> import biotext as bt
@@ -98,13 +111,13 @@ def create_seqrecord_list(seq_list,header_list=None):
         List of headers in string format, if set to 'None' the headers will 
         be automatically defined with numbers in increasing order.
 
-    Output
-    --------
+    Returns
+    -------
     seqrecord_list : list of SeqRecord
         List of SeqRecord.
         
     Example
-    --------
+    -------
     Decode a string.
 
     >>> import biotext as bt
@@ -195,7 +208,7 @@ def get_consensus(seq_list, preserve_gap=False):
         If True, the consensus sequence may contain gaps ("-") based on the majority characters and the gaps present in the aligned sequences. 
         If False, the consensus sequence is determined without gaps by considering only the majority characters.
 
-    Output
+    Returns
     -------
     consensus : str
         Consensus sequence based on the majority characters, with or without gaps ("-") depending on the `preserve_gap` parameter.
@@ -258,13 +271,13 @@ def get_header(seqrecord_list):
     seqrecord_list : list of SeqRecord
         List of SeqRecord.
 
-    Output
-    --------
+    Returns
+    -------
     header_list : list of string
         List of all headers extracted from input.
         
     Example
-    --------
+    -------
     Create seqrecord_list, extract headers and print it.
 
     >>> import biotext as bt
@@ -291,13 +304,13 @@ def get_seq(seqrecord_list):
     seqrecord_list : list of SeqRecord
         List of SeqRecord.
 
-    Output
-    --------
+    Returns
+    -------
     seq_list : list of string
         List of all sequences extracted from input.
         
     Example
-    --------
+    -------
     Create seqrecord_list, extract sequences and print it.
 
     >>> import biotext as bt
