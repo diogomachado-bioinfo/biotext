@@ -249,7 +249,7 @@ def get_consensus(seq_list, preserve_gap=False):
             align2.append(list(i.seq))
             align.append(str(i.seq))
         align2 = np.array(align2)
-        m = stats.mode(align2)  # Determine mode
+        m = stats.mode(align2, keepdims=False)  # Determine mode
         m = m[0][m[1] >= 0]  # Filter characters by minimal occurrence
         consensus = ''.join(m)
         if not preserve_gap:
