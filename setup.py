@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='biotext',
-      version='3.0.0.0',
+      version='3.0.0.1',
       author='Diogo de J. S. Machado',
       author_email='diogomachado.bioinfo@gmail.com',
       description='The biotext library offers resources for natural language processing based on bioinformatics tools',
