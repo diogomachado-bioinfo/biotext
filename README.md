@@ -653,7 +653,7 @@ texts = [
     'And this is the third text.'
 ]
 
-we = bt.wordembtools.WordEmbedding(data_set=texts)
+we = bt.wordembtools.WordEmbedding(data_set=texts, min_occ_to_use=0)
 embeddings = we.word_embedding
 print(embeddings)
 ```
