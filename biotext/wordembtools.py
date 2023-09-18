@@ -11,7 +11,6 @@ from . import fastatools, aminocode
 import numpy as np
 from tqdm import tqdm
 import sys
-import nltk
 import sweep
 from joblib import Parallel, delayed
 from time import time
@@ -27,10 +26,8 @@ class WordEmbedding:
         The collection of texts to generate embeddings.
     word_set : list, optional
         A pre-defined set of words to use for the embedding. Defaults to None.
-    remove_stopwords : bool, optional
-        Whether to remove stop words from the texts. Defaults to False.
-    stopwords_list : list, optional
-        Custom list of stop words to remove from the texts. Defaults to None.
+    words_to_skip : bool, optional
+        List of words to skip in word embedding. Defaults to None.
     min_occ_to_use : int, optional
         The minimum number of occurrences of a word in the collection of texts
         to include it in the embedding. Defaults to 100.
@@ -85,8 +82,7 @@ class WordEmbedding:
     """
     def __init__(self, data_set,
                  word_set = None,
-                 remove_stopwords = False,
-                 stopwords_list = None,
+                 words_to_skip = None,
                  min_occ_to_use = 100,
                  max_words = 10000,
                  word_tokenizer_fun = None,
@@ -140,8 +136,6 @@ class WordEmbedding:
             create_word_set = False
         if word_tokenizer_fun is None:
             word_tokenizer_fun = lambda x: re.findall(r'\b(\w*[^\s]+\w*)\b', x)
-        if stopwords_list is None:
-            stopwords_list = nltk.corpus.stopwords.words("english")
             
         self.elapsed_time = []
             
@@ -194,13 +188,10 @@ class WordEmbedding:
                 data_set_exploded.append(token)
                 data_set_exploded_idx.append(index)
 
-        # If no word set is provided, split the data set into words using
-        # nltk.tokenize.word_tokenize and create a set of unique words
+        # If no word set is provided, create a set of unique words
         if create_word_set:
             word_set = set(data_set_exploded)
             word_set = sorted(set(word_set))
-            
-        # If a word set is provided, use it instead
 
         # For each word in the word set, find which rows in the data set
         # contain that word and count
@@ -214,7 +205,7 @@ class WordEmbedding:
         word_idx = [word_idx[word] for word in word_set]
         word_count = [word_count[word] for word in word_set]
         # If no word set is provided, remove any words that appear fewer than
-        # min_occ_to_use times and any stopwords if remove_stopwords is True
+        # min_occ_to_use times and words in words_to_remove
         if create_word_set:
             word_count = [len(i) for i in word_idx]
             if min_occ_to_use > 0:
@@ -223,19 +214,24 @@ class WordEmbedding:
                 word_set = [word_set[i] for i in more_than]
                 word_idx = [word_idx[i] for i in more_than]
                 word_count = [word_count[i] for i in more_than]
-            if remove_stopwords:
-                no_stop = [i not in stopwords_list for i in
-                           word_set]
-                word_set = [word_set[i] for i in no_stop]
-                word_idx = [word_idx[i] for i in no_stop]
-                word_count = [word_count[i] for i in no_stop]
-        # Sort word_count in descending order and get the corresponding indices
-        ord_idx = sorted(range(len(word_count)), key=lambda i: word_count[i],
-                         reverse=True)
-        # Reorder lists based on ord_idx
-        word_set = [word_set[i] for i in ord_idx]
-        word_idx = [word_idx[i] for i in ord_idx]
-        word_count = [word_count[i] for i in ord_idx]
+            if words_to_skip != None:
+                no_skip = [index for index, word in enumerate(word_set) if
+                           word not in words_to_skip]
+                word_set = [word_set[i] for i in no_skip]
+                word_idx = [word_idx[i] for i in no_skip]
+                word_count = [word_count[i] for i in no_skip]
+            
+        if create_word_set:
+            # Sort word_count in descending order and get the corresponding
+            # indices
+            ord_idx = sorted(range(len(word_count)),
+                             key=lambda i: word_count[i],
+                             reverse=True)
+            # Reorder lists based on ord_idx
+            word_set = [word_set[i] for i in ord_idx]
+            word_idx = [word_idx[i] for i in ord_idx]
+            word_count = [word_count[i] for i in ord_idx]
+        
         if max_words != None:
             # Select only the top 'max_words' elements from each list
             word_set = word_set[:max_words]
