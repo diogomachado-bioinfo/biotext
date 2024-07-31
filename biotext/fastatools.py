@@ -15,7 +15,7 @@ Functions:
 - fasta_to_mat: Convert FASTA sequences to a matrix representation using SWeeP.
 
 Author: Diogo de J. S. Machado
-Date: 13/07/2023
+Date: 30/07/2024
 """
 import tempfile
 import os
@@ -87,7 +87,8 @@ def export_fasta(seqrecord_list, output_file_name, header=None):
     seqrecord_list = list(seqrecord_list)
     
     if header != None: 
-        seqrecord_list = create_seqrecord_list([str(i.seq) for i in seqrecord_list],header=header)
+        seqrecord_list = create_seqrecord_list([str(i.seq) for i in
+                                                seqrecord_list],header=header)
     
     outputFile = codecs.open(output_file_name,'w','utf-8')
     for i in seqrecord_list:
@@ -156,7 +157,8 @@ def run_clustalo(input_file_name, args=""):
     input_file_name : str
         Path to the input file containing the sequences to align.
     args : str, optional
-        Additional arguments to pass to Clustal Omega. Defaults to an empty string.
+        Additional arguments to pass to Clustal Omega. Defaults to an empty
+        string.
 
     Output
     ------
@@ -180,7 +182,8 @@ def run_clustalo(input_file_name, args=""):
     fp = tempfile.TemporaryFile(mode='w', delete=False)
 
     # Build the Clustal Omega command string
-    cmd_string = "clustalo -i " + input_file_name + " -o " + fp.name + " --auto --outfmt clu --force"
+    cmd_string = (f'clustalo -i {input_file_name} -o {fp} --auto '
+                  '--outfmt clu --force')
     cmd_string += " " + args
 
     # Execute the Clustal Omega command
@@ -205,13 +208,16 @@ def get_consensus(seq_list, preserve_gap=False):
     seq_list : list
         List of sequences in SeqRecord object format or as strings.
     preserve_gap : bool, optional
-        If True, the consensus sequence may contain gaps ("-") based on the majority characters and the gaps present in the aligned sequences. 
-        If False, the consensus sequence is determined without gaps by considering only the majority characters.
+        - If True, the consensus sequence may contain gaps ("-") based on the 
+          majority characters and the gaps present in the aligned sequences. 
+        - If False, the consensus sequence is determined without gaps by
+          considering only the majority characters.
 
     Returns
     -------
     consensus : str
-        Consensus sequence based on the majority characters, with or without gaps ("-") depending on the `preserve_gap` parameter.
+        Consensus sequence based on the majority characters, with or without
+        gaps ("-") depending on the `preserve_gap` parameter.
     align : list
         List of aligned sequences.
 
@@ -221,15 +227,24 @@ def get_consensus(seq_list, preserve_gap=False):
 
     >>> import biotext as bt
     >>> seq_list = ['ACTG', 'ACTC', 'ACCC', 'ACC']
-    >>> consensus, align = bt.fastatools.get_consensus(seq_list, preserve_gap=True)
+    >>> consensus, align = bt.fastatools.get_consensus(seq_list,
+                                                       preserve_gap=True)
     >>> print('Consensus: ', consensus)
     >>> print('Alignment: ', align)
     Consensus:  ACCC
     Alignment:  ['ACTG', 'ACTC', 'ACCC', 'ACC-']
     """
+    char_to_num = {ch: idx for idx, ch in
+                   enumerate('-ABCDEFGHIJKLMNOPQRSTUVWXYZ')}
+    chars_to_numbers = np.vectorize(char_to_num.get)
+    num_to_char = {idx: ch for idx, ch in
+                   enumerate('-ABCDEFGHIJKLMNOPQRSTUVWXYZ')}
+    numbers_to_chars = np.vectorize(num_to_char.get)
+    
     seq_list = list(seq_list)
 
-    # Check if the input is in SeqRecord object format, if not, do the conversion
+    # Check if the input is in SeqRecord object format, if not, do the
+    # conversion
     try:
         seq_list[0].description
     except AttributeError:
@@ -249,8 +264,10 @@ def get_consensus(seq_list, preserve_gap=False):
             align2.append(list(i.seq))
             align.append(str(i.seq))
         align2 = np.array(align2)
+        align2 = chars_to_numbers(align2)
         m = stats.mode(align2, keepdims=False)  # Determine mode
-        m = m[0][m[1] >= 0]  # Filter characters by minimal occurrence
+        m = m[0]
+        m = numbers_to_chars(m)
         consensus = ''.join(m)
         if not preserve_gap:
             consensus = re.sub('\-+', '', consensus)
@@ -328,7 +345,7 @@ def get_seq(seqrecord_list):
         seq_list.append (str(seq))
     return seq_list
 
-def fasta_to_mat(fasta,mask=[2,1,2],**kwargs):
+def fasta_to_mat(fasta,mask=[2,1,2], **kwargs):
     """
     Convert FASTA sequences to a matrix representation using SWeeP method.
 
