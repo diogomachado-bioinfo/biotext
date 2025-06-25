@@ -33,14 +33,9 @@ setup(
     version=current_date,  # Uses automatically generated date version
     author='Diogo de Jesus Soares Machado, Roberto Tadeu Raittz',
     description=(
-        'The Biotext Python Package bridges the gap between Bioinformatics '
-        'and NLP by applying biological sequence analysis techniques to '
-        'Text Mining. It introduces SWeePtex, a scalable text '
-        'representation method built on the SWeeP algorithm. By encoding '
-        'text into Biological Sequence-Like (BSL) formats — using AMINOcode '
-        '(amino acid-like) and DNAbits (nucleotide-like) schemes — Biotext '
-        'ensures compatibility with SWeeP, enabling efficient similarity '
-        'analysis, clustering, and machine learning.'
+        'Biotext bridges Bioinformatics and NLP by encoding data into a '
+        'Biological Sequence-Like format. Combined with the SWeeP method, it '
+        'supports vector operations for efficient analysis.'
     ),
     packages=find_packages(),
     long_description_content_type='text/markdown',
