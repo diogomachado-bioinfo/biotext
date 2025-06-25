@@ -26,7 +26,8 @@ from setuptools import setup, find_packages
 from datetime import datetime
 
 # Get current date in YYYY.MM.DD format
-current_date = datetime.now().strftime("%Y.%m.%d")
+now = datetime.now()
+current_date = f"{now.year}.{now.month:02d}.{now.day:02d}"
 
 setup(
     name='biotext',
@@ -41,7 +42,7 @@ setup(
     long_description_content_type='text/markdown',
     long_description=open('README.md').read(),
     zip_safe=False,
-    install_requires = [
+    install_requires=[
         'biopython==1.85',
         'h5py==3.13.0',
         'joblib==1.4.2',
