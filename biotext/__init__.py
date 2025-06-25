@@ -1,16 +1,35 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
 """
-The biotext library offers resources for natural language processing based on
-bioinformatics tools. With biotext, it is possible to use native bioinformatics
-methods to create text mining strategies. The biotext process starts by
-encoding natural language texts in a format based on biological sequences,
-which are usable in alignment and vectorization approaches.
+NON-COMMERCIAL LICENSE
 
-Author: Diogo de J. S. Machado
-Date: 13/07/2023
+Copyright (C) 2025 Diogo de Jesus Soares Machado, Roberto Tadeu Raittz
+
+This file is part of Biotext Python Package.
+
+Biotext Python Package and its associated documentation files are available
+for anyone to use, copy, modify, and share, only for non-commercial purposes,
+under the following conditions:
+
+1. This copyright notice and this license appear in all copies or substantial
+   parts of the Software.
+2. All use of the Software gives proper credit to the original authors.
+3. No one uses the Software in any commercial context. This includes, but is
+   not limited to, using it in paid products, services, platforms, or tools
+   that generate profit or other commercial benefit, without written
+   permission from the authors.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED. THE AUTHORS TAKES NO RESPONSIBILITY FOR ANY DAMAGE THAT COMES FROM
+USING OR NOT BEING ABLE TO USE THE SOFTWARE.
 """
-from . import fastatools
-from . import dnabits
-from . import aminocode
-from . import wordembtools
+
+from .aminocode import aminocode
+from .dnabits import dnabits
+from .sweeptex import sweeptex
+from .sweeptex_emb import sweeptex_emb
+
+__all__ = [
+    'aminocode',
+    'dnabits',
+    'sweeptex',
+    'sweeptex_emb'
+]
