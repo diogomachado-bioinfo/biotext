@@ -26,8 +26,7 @@ from setuptools import setup, find_packages
 from datetime import datetime
 
 # Get current date in YYYY.MM.DD format
-now = datetime.now()
-current_date = f"{now.year}.{now.month:02d}.{now.day:02d}"
+current_date = datetime.now().strftime("%Y.%m.%d")
 
 setup(
     name='biotext',
